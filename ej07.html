@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7 - Barra de Navegación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fafafa;
+            color: #333;
+        }
+        /* ===== BARRA DE NAVEGACIÓN ===== */
+        
+        nav {
+            background: #1a237e;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        nav .logo {
+            color: #f9a825;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 16px 20px 16px 0;
+            margin-right: auto;
+        }
+        
+        nav a {
+            color: #c5cae9;
+            text-decoration: none;
+            padding: 18px 14px;
+            font-size: 0.95rem;
+            display: inline-block;
+            transition: color 0.2s, background 0.2s;
+        }
+        /* Cambia de color cuando se hace clic (clase activo) */
+        
+        nav a:hover,
+        nav a.activo {
+            color: #f9a825;
+            background: #283593;
+        }
+        /* ===== SECCIONES DE CONTENIDO ===== */
+        
+        section {
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        section h2 {
+            color: #1a237e;
+            font-size: 1.8rem;
+            margin-bottom: 14px;
+            border-left: 4px solid #f9a825;
+            padding-left: 12px;
+        }
+        
+        section p {
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .pie {
+            text-align: center;
+            padding: 20px;
+            background: #1a237e;
+            color: #c5cae9;
+            font-size: 0.9rem;
+        }
+        
+        .volver {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1a237e;
+            text-decoration: none;
+            border-bottom: 2px solid #1a237e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- EJERCICIO 7: Barra de Navegación Horizontal -->
+
+    <!-- La barra de navegación -->
+    <nav>
+        <span class="logo">📖 Mi Biografía</span>
+
+        <!-- Enlaces internos (a secciones de esta misma página) -->
+        <a href="#sobre-mi" onclick="activar(this)">Sobre mí</a>
+        <a href="#estudios" onclick="activar(this)">Estudios</a>
+        <a href="#pasatiempos" onclick="activar(this)">Pasatiempos</a>
+        <a href="#metas" onclick="activar(this)">Metas</a>
+
+        <!-- Enlaces externos (redes sociales) -->
+        <a href="https://www.instagram.com" target="_blank" onclick="activar(this)">Instagram 🔗</a>
+        <a href="https://www.youtube.com" target="_blank" onclick="activar(this)">YouTube 🔗</a>
+    </nav>
+
+    <!-- Secciones internas de la página -->
+    <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <p>
+            Mi nombre es <strong>Christian Guaminga Cela</strong>. Soy estudiante universitario con pasión por la tecnología y el desarrollo web. Me caracterizo por ser responsable, creativo y siempre dispuesto a aprender cosas nuevas.
+        </p>
+    </section>
+    <hr>
+
+    <section id="estudios">
+        <h2>Estudios</h2>
+        <p>
+            Actualmente curso el tercer semestre de Ingeniería en Sistemas en la Universidad de Bolivariana del Ecuador. He aprendido programación, bases de datos, diseño web y lógica computacional.
+        </p>
+    </section>
+    <hr>
+
+    <section id="pasatiempos">
+        <h2>Pasatiempos</h2>
+        <p>
+            Disfruto escuchar música, jugar videojuegos, leer libros de ciencia ficción y explorar nuevas tecnologías en mi tiempo libre.
+        </p>
+    </section>
+    <hr>
+
+    <section id="metas">
+        <h2>Metas</h2>
+        <p>
+            Mi meta principal es graduarme con excelencia y trabajar como desarrollador web full-stack, contribuyendo a proyectos de impacto social.
+        </p>
+        <a class="volver" href="index.html">← Volver al menú principal</a>
+    </section>
+
+    <div class="pie">Ejercicio 7 — Barra de Navegación — Tarea 1</div>
+
+    <script>
+        // 
+        function activar(enlace) {
+            // 
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('activo'));
+            // 
+            enlace.classList.add('activo');
+        }
+    </script>
+
+</body>
+
+</html>

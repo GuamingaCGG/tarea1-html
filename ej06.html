@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 6 - Diseño de Caja con Slider</title>
+  <style>
+    body {
+      background: #263238;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #80cbc4;
+    }
+
+    /* ===== LA CAJA ===== */
+    .caja {
+      width: 100%;
+      max-width: 600px;
+      background: #37474f;       /* Fondo coloreado */
+      border: 3px solid #80cbc4; /* Borde */
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;        /* Texto al centro */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .caja h2 {
+      color: #e0f2f1;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    /* ===== EL SLIDER (carrusel de texto) ===== */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      height: 80px;
+      border-radius: 8px;
+      background: #263238;
+      margin-bottom: 20px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #a5f3fc;
+      font-style: italic;
+    }
+
+    /* Botones del slider */
+    .controles {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .controles button {
+      background: #80cbc4;
+      border: none;
+      color: #263238;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .controles button:hover { background: #4db6ac; }
+
+    .indicadores {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .punto {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #546e7a;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .punto.activo { background: #80cbc4; }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      color: #80cbc4;
+      text-decoration: none;
+      border-bottom: 2px solid #80cbc4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EJERCICIO 6: Diseño de Caja con Slider -->
+
+  <h1>Diseño de Caja</h1>
+
+  <div class="caja">
+    <h2>🌟 Frases Motivadoras</h2>
+
+    <!-- El Slider -->
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="slide">"El éxito es la suma de pequeños esfuerzos repetidos."</div>
+        <div class="slide">"La educación es el arma más poderosa."</div>
+        <div class="slide">"No tengas miedo de empezar desde cero."</div>
+        <div class="slide">"Cada línea de código te acerca a tu meta."</div>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button onclick="anterior()">&#8592; Anterior</button>
+      <button onclick="siguiente()">Siguiente &#8594;</button>
+    </div>
+
+    <div class="indicadores" id="indicadores"></div>
+
+    <p style="margin-top:20px; color:#b2dfdb;">
+      Texto centrado dentro de la caja ✅
+    </p>
+  </div>
+
+  <a href="index.html">← Volver al menú</a>
+
+  <script>
+    let actual = 0;
+    const totalSlides = 4;
+    const slides = document.getElementById('slides');
+    const contenedorPuntos = document.getElementById('indicadores');
+
+    // Crear los puntos indicadores
+    for (let i = 0; i < totalSlides; i++) {
+      const punto = document.createElement('div');
+      punto.className = 'punto' + (i === 0 ? ' activo' : '');
+      punto.onclick = () => irA(i);
+      contenedorPuntos.appendChild(punto);
+    }
+
+    function actualizarPuntos() {
+      document.querySelectorAll('.punto').forEach((p, i) => {
+        p.classList.toggle('activo', i === actual);
+      });
+    }
+
+    function irA(n) {
+      actual = n;
+      slides.style.transform = `translateX(-${actual * 100}%)`;
+      actualizarPuntos();
+    }
+
+    function siguiente() {
+      actual = (actual + 1) % totalSlides;
+      irA(actual);
+    }
+
+    function anterior() {
+      actual = (actual - 1 + totalSlides) % totalSlides;
+      irA(actual);
+    }
+
+    // Avanzar automáticamente cada 3 segundos
+    setInterval(siguiente, 3000);
+  </script>
+
+</body>
+</html>

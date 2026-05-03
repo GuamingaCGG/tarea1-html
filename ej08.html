@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Esta línea es CLAVE para que el responsivo funcione en móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8 - Diseño Responsivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fafafa;
+            color: #333;
+        }
+        /* ===== BARRA DE NAVEGACIÓN ===== */
+        
+        nav {
+            background: #1a237e;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        nav .logo {
+            color: #f9a825;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 16px 0;
+            margin-right: auto;
+        }
+        
+        nav a {
+            color: #c5cae9;
+            text-decoration: none;
+            padding: 18px 12px;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: color 0.2s, background 0.2s;
+        }
+        
+        nav a:hover,
+        nav a.activo {
+            color: #f9a825;
+            background: #283593;
+        }
+        /* =====  ===== */
+        
+        .contenedor {
+            display: flex;
+            gap: 24px;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        /* */
+        
+        .principal {
+            flex: 2;
+        }
+        /* Barra lateral*/
+        
+        .lateral {
+            flex: 1;
+            background: #e8eaf6;
+            border-radius: 10px;
+            padding: 24px;
+        }
+        
+        section {
+            margin-bottom: 32px;
+        }
+        
+        h2 {
+            color: #1a237e;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            border-left: 4px solid #f9a825;
+            padding-left: 10px;
+        }
+        
+        h3 {
+            color: #283593;
+            margin-bottom: 8px;
+        }
+        
+        p,
+        li {
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 6px;
+        }
+        /* ===== MEDIA QUERY: MÓVIL (menos de 768px) ===== */
+        /* Todo esto se aplica SOLO cuando la pantalla es pequeña */
+        
+        @media (max-width: 768px) {
+            /* La navegación: los links se ponen verticales */
+            nav {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+            nav a {
+                padding: 10px 0;
+                border-bottom: 1px solid #283593;
+                width: 100%;
+            }
+            /* El contenedor: pasa de columnas a filas apiladas */
+            .contenedor {
+                flex-direction: column;
+                margin: 20px auto;
+            }
+            /* El contenido principal ocupa todo el ancho */
+            .principal,
+            .lateral {
+                width: 100%;
+            }
+            /* Encabezados más pequeños en móvil */
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        .pie {
+            text-align: center;
+            padding: 16px;
+            background: #1a237e;
+            color: #c5cae9;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+        
+        .aviso {
+            background: #c8e6c9;
+            border: 1px solid #4caf50;
+            color: #1b5e20;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .volver {
+            display: inline-block;
+            margin-top: 16px;
+            color: #1a237e;
+            text-decoration: none;
+            border-bottom: 2px solid #1a237e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- EJERCICIO 8: Diseño Responsivo con Media Queries -->
+
+    <nav>
+        <span class="logo">📖 Mi Biografía</span>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#estudios">Estudios</a>
+        <a href="#pasatiempos">Pasatiempos</a>
+        <a href="#metas">Metas</a>
+        <a href="https://www.instagram.com/gcchristx/" target="_blank">Instagram 🔗</a>
+    </nav>
+
+    <div class="contenedor">
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="principal">
+
+            <div class="aviso">
+                💡 <strong>¡Esta página es responsiva!</strong> Cambia el tamaño de la ventana desde cualquier dispositivo.
+            </div>
+
+            <section id="sobre-mi">
+                <h2>Sobre mí</h2>
+                <p>
+                    Mi nombre es <strong>Christian Geovanny Guaminga Cela</strong>. Soy estudiante universitario apasionado por la tecnología y el desarrollo web.
+                </p>
+            </section>
+
+            <section id="estudios">
+                <h2>Estudios</h2>
+                <p>
+                    Curso Ingeniería en Sistemas en la Universidad de Bolivariana del Ecuador. He aprendido programación, bases de datos y diseño web.
+                </p>
+            </section>
+
+            <section id="pasatiempos">
+                <h2>Pasatiempos</h2>
+                <ul>
+                    <li>🎮 Videojuegos</li>
+                    <li>📚 Leer libros</li>
+                    <li>🎵 Escuchar música</li>
+                </ul>
+            </section>
+
+            <section id="metas">
+                <h2>Metas</h2>
+                <p>Graduarme con excelencia y trabajar como desarrollador web y tener conocimintos en ciberseguridad.</p>
+            </section>
+
+            <a class="volver" href="index.html">← Volver al menú</a>
+        </main>
+
+        <!-- BARRA LATERAL -->
+        <aside class="lateral">
+            <h3>📊 Datos rápidos</h3>
+            <ul>
+                <li>📍 Ecuador</li>
+                <li>🎂 21 años</li>
+                <li>🎓 3er semestre</li>
+                <li>💻 Ing. Sistemas</li>
+            </ul>
+
+            <br>
+            <h3>🌐 Mis redes</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/gcchristx/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.youtube.com/@chrisg.c6761" target="_blank">YouTube</a></li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <div class="pie">Ejercicio 8 — Diseño Responsivo — Tarea 1</div>
+
+</body>
+
+</html>
